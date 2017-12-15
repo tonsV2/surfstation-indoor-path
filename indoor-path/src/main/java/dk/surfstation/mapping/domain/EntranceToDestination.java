@@ -17,6 +17,7 @@ public class EntranceToDestination implements Serializable {
 	private Destination destination;
 	private String pathUrl;
 
+	@SuppressWarnings("unused")
 	public EntranceToDestination()
 	{
 	}
@@ -69,7 +70,7 @@ public class EntranceToDestination implements Serializable {
 		public EntranceToDestinationId() {
 		}
 
-		public EntranceToDestinationId(long entranceId, long destinationId) {
+		EntranceToDestinationId(long entranceId, long destinationId) {
 			this.entranceId = entranceId;
 			this.destinationId = destinationId;
 		}
