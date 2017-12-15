@@ -52,7 +52,19 @@ public class Initialize implements ApplicationRunner {
 		destination2.setName("Surfstation");
 		destinationRepository.save(destination2);
 
+		String host = "localhost:8080";
+		String format = host + "/entrances/%s/destination/%s" + System.lineSeparator();
+
 		EntranceToDestination entranceToDestination = new EntranceToDestination(entranceA, destination0, "some url for A to Google");
 		entranceToDestinationRepository.save(entranceToDestination);
+		System.out.printf(format, entranceA.getId(), destination0.getId());
+
+		EntranceToDestination AToMS = new EntranceToDestination(entranceA, destination1, "some url for A to Microsoft");
+		entranceToDestinationRepository.save(AToMS);
+		System.out.printf(format, entranceA.getId(), destination1.getId());
+
+		EntranceToDestination BToGoogle = new EntranceToDestination(entranceB, destination1, "some url for B to Google");
+		entranceToDestinationRepository.save(BToGoogle);
+		System.out.printf(format, entranceB.getId(), destination1.getId());
 	}
 }
