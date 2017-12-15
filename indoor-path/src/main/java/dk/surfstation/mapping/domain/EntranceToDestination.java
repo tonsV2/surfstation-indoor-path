@@ -82,8 +82,7 @@ public class EntranceToDestination implements Serializable {
 
 			EntranceToDestinationId that = (EntranceToDestinationId) o;
 
-			if(entranceId != that.entranceId) return false;
-			return destinationId == that.destinationId;
+			return entranceId == that.entranceId && destinationId == that.destinationId;
 		}
 
 		@Override
