@@ -3,6 +3,7 @@ package dk.surfstation.mapping.controller;
 import dk.surfstation.mapping.domain.Destination;
 import dk.surfstation.mapping.domain.Entrance;
 import dk.surfstation.mapping.service.MapService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,8 +19,12 @@ public class MapController {
 	}
 
 	@GetMapping("/entrances/{entranceId}/destination/{destinationId}")
-	public String getPath(@PathVariable long entranceId, @PathVariable long destinationId) {
-		return mapService.getPathUrl(entranceId, destinationId);
+	public ResponseEntity<?> getPath(@PathVariable long entranceId, @PathVariable long destinationId) {
+		String pathUrl = mapService.getPathUrl(entranceId, destinationId);
+		if (pathUrl == null) {
+			return ResponseEntity.notFound().build();
+		}
+		return ResponseEntity.ok(pathUrl);
 	}
 
 	@GetMapping("/destinations")

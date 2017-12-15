@@ -30,7 +30,7 @@ public class MapServiceImpl implements MapService {
 	public String getPathUrl(long entranceId, long destinationId) {
 		Entrance entrance = entranceRepository.findOne(entranceId);
 		Destination destination = destinationRepository.findOne(destinationId);
-		return entranceToDestinationRepository.getPathByEntranceAndDestination(entrance, destination).getPathUrl();
+		return entranceToDestinationRepository.getPath(entrance, destination);
 	}
 
 	@Override

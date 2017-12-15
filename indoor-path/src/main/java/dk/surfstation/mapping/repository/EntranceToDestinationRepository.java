@@ -8,6 +8,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 public interface EntranceToDestinationRepository extends JpaRepository<EntranceToDestination, Long> {
-	@Query("select ed from EntranceToDestination ed where ed.entrance = :entrance and ed.destination = :destination")
-	EntranceToDestination getPathByEntranceAndDestination(@Param("entrance") Entrance entrance, @Param("destination") Destination destination);
+	@Query("select ed.pathUrl from EntranceToDestination ed where ed.entrance = :entrance and ed.destination = :destination")
+	String getPath(@Param("entrance") Entrance entrance, @Param("destination") Destination destination);
 }
