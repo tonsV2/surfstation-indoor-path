@@ -2,6 +2,7 @@ package dk.surfstation.mapping.service;
 
 import dk.surfstation.mapping.domain.Destination;
 import dk.surfstation.mapping.domain.Entrance;
+import dk.surfstation.mapping.domain.EntranceToDestination;
 import dk.surfstation.mapping.repository.DestinationRepository;
 import dk.surfstation.mapping.repository.EntranceRepository;
 import dk.surfstation.mapping.repository.EntranceToDestinationRepository;
@@ -31,6 +32,11 @@ public class MapServiceImpl implements MapService {
 		Entrance entrance = entranceRepository.findOne(entranceId);
 		Destination destination = destinationRepository.findOne(destinationId);
 		return entranceToDestinationRepository.getPath(entrance, destination);
+	}
+
+	@Override
+	public List<EntranceToDestination> findOne(long entranceId, long destinationId) {
+		return entranceToDestinationRepository.findOne(destinationId);
 	}
 
 	@Override

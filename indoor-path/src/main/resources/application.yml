@@ -1,0 +1,8 @@
+spring:
+  jpa:
+    show-sql: true
+
+storage:
+  bucket-name: surfstation-indoor-map
+  access-key: AKIAISYKWTWI7SJ6LB5A
+  secret-key: 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

@@ -15,6 +15,7 @@ public class EntranceToDestination implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "destination_id", insertable = false, updatable = false)
 	private Destination destination;
+
 	private String pathUrl;
 
 	@SuppressWarnings("unused")
@@ -59,8 +60,7 @@ public class EntranceToDestination implements Serializable {
 	}
 
 	@Embeddable
-	public static class EntranceToDestinationId implements Serializable
-	{
+	private static class EntranceToDestinationId implements Serializable {
 		@Column(name = "entrance_id")
 		long entranceId;
 

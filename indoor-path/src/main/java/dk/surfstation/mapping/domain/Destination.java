@@ -3,6 +3,7 @@ package dk.surfstation.mapping.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.net.URL;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -12,7 +13,7 @@ public class Destination {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	private String name;
-	private String description;
+	private URL url;
 	@JsonIgnore
 	@OneToMany(mappedBy = "destination", cascade = CascadeType.ALL, orphanRemoval = true)
 	private Set<EntranceToDestination> entranceToDestination = new HashSet<>();
@@ -33,12 +34,14 @@ public class Destination {
 		this.name = name;
 	}
 
-	public String getDescription() {
-		return description;
+	public URL getUrl()
+	{
+		return url;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
+	public void setUrl(URL url)
+	{
+		this.url = url;
 	}
 
 	public Set<EntranceToDestination> getEntranceToDestination() {
